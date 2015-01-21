@@ -17,18 +17,19 @@ gem 'will_paginate',           	'3.0.7'
 gem 'bootstrap-will_paginate', 	'0.0.10'
 gem 'bootstrap-sass',          	'3.2.0.0'
 gem 'rails-html-sanitizer',    	'1.0.1'
-gem 'pg',             		   	'0.18.1'
 gem 'rake',						'10.4.2'
+gem 'pg',             		   	'0.18.1'
 
 group :doc do
   	gem 'sdoc', require: false
 end
 
 group :development, :test do
+	gem 'sqlite3'
 end 
 
 group :production do
-
+	gem 'activerecord-postgresql-adapter'
 	gem 'unicorn',        '4.8.3'
 	gem 'rails_12factor', '0.0.2'
 end
