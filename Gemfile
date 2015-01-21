@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
+
 group :doc do
   	gem 'sdoc', require: false
 end
@@ -19,5 +20,6 @@ end
 
 group :production do
 	gem 'pg',             '0.18.1'
+	gem 'unicorn',        '4.8.3'
 	gem 'rails_12factor', '0.0.2'
 end
