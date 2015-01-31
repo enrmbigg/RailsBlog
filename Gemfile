@@ -16,6 +16,7 @@ gem 'rails-html-sanitizer',    	'1.0.1'
 gem 'rake',						'10.4.2'
 gem 'pg',             		   	'0.18.1'
 gem 'paperclip'
+gem 'sorcery'
 
 group :doc do
   	gem 'sdoc', require: false
