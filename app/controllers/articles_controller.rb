@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-
+	before_filter :require_login, except: [:index, :show]
 	def index 
 		@articles = Article.all
 	end
@@ -17,7 +17,8 @@ class ArticlesController < ApplicationController
 	def create
 		@article = Article.new(
 		 title: params[:article][:title],
-		 body: params[:article][:body])
+		 body: params[:article][:body],
+		 author: params[:article][:author])
 		@article.save
 		redirect_to article_path(@article)
 	end

@@ -1,3 +1,36 @@
-// Place all the styles related to the Articles controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+$light_gray: #CCC;
+ 
+body {
+  background-color: $light_gray;
+  font: {
+    family: Helvetica, Arial, sans-serif;
+    size: 14px;
+  }
+}
+ 
+a {
+  color: #0000DD;
+  img: {
+    border: none;
+  }
+}
+ 
+.clear {
+  clear: both;
+  height: 0;
+  overflow: hidden;
+}
+ 
+#container {
+  width: 75%;
+  margin: 0 auto;
+  background: #fff;
+  padding: 20px 40px;
+  border: solid 1px black;
+  margin-top: 20px;
+}
+ 
+#content {
+  clear: both;
+  padding-top: 20px;
+}
