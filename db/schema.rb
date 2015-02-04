@@ -11,11 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150131123612) do
+ActiveRecord::Schema.define(version: 20150203224648) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
     t.text     "body"
+    t.text     "author"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_file_name"
@@ -55,13 +56,17 @@ ActiveRecord::Schema.define(version: 20150131123612) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",            null: false
+    t.string   "email",                           null: false
     t.string   "crypted_password"
     t.string   "salt"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "reset_password_token"
+    t.datetime "reset_password_token_expires_at"
+    t.datetime "reset_password_email_sent_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token"
 
 end

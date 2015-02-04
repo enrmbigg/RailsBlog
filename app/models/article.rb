@@ -12,6 +12,10 @@ class Article < ActiveRecord::Base
 		end.join(", ")
 	end
 
+	def publish_month
+	  created_at.strftime("%B %Y")
+	end
+	
 	def tag_list=(tags_string)
 		self.taggings.destroy_all
 		tag_names = tags_string.split(",").collect{|s| s.strip.downcase}.uniq
