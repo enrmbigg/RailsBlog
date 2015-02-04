@@ -1,25 +1,85 @@
 <!DOCTYPE html>
-<html>
-	<head>
-	  <title>Blog</title>
-	  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-	  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-	  <%= csrf_meta_tags %>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie9" lang="en"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+  	<head>
+	  	<meta charset="utf-8" />
+
+	  	<!-- Uncomment to make IE8 render like IE7 -->
+	  	<!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
+
+	  	<!-- Set the viewport width to device width for mobile -->
+	  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	  	<title><%= content_for?(:title) ? yield(:title) : "Blog" %></title>
+
+	  	<%= stylesheet_link_tag    "application" %>
+	  	<%= javascript_include_tag "vendor/custom.modernizr" %>
+	    <%= csrf_meta_tags %>
 	</head>
 	<body>
-		<div id="nav">
-		    <% if current_user %>
-		      <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
-		      <%= link_to "Logout", :logout, method: :post %>
-		    <% else %>
-		      <%= link_to "Register", new_user_path %> |
-		      <%= link_to "Login", :login %>
-		    <% end %>
-		  </div>
-		  <div>
-		    <p id="notice"><%= flash[:notice] %></p>
-		    <p id="alert"><%= flash[:alert] %></p>
+		<nav class="top-bar">
+	  		<ul class="title-area">
+	    		<li class="name">
+	     			<h1><%= link_to "Rails Blog", articles_path %></a></h1>
+	    		</li>
+	  		</ul>
+	  		<section class="top-bar-section">
+	    		<ul class="right">
+			      <li class="divider"></li>
+			      <li><%= link_to "Home", articles_path %></li>
+			      <li class="divider"></li>
+			      <li><%= link_to "Contact Us" %></li>
+		      	    <% if current_user %>
+		      	    	<li class="divider"></li>
+				      	<li><%= link_to "Edit Profile", edit_user_path(current_user.id) %></li>
+				      	<li class="divider"></li>
+				      	<li><%= link_to "Logout", :logout, method: :post %></li>
+				    <% else %>
+				    	<li class="divider"></li>
+				      	<li><%= link_to "Register", new_user_path %></li>
+				      	<li class="divider"></li>
+				      	<li><%= link_to "Login", :login %></li>
+				    <% end %>
+	    		</ul>
+	 		</section>
+		</nav>
+			 		<!--<div class="icon-bar five-up" role="navigation">
+					  <a class="item" role="button" tabindex="0" aria-label="home">
+					    <i class="fi-home"></i>
+					  </a>
+					  <a class="item" role="button" tabindex="0" aria-label="Bookmark">
+					    <i class="fi-bookmark"></i>
+					  </a>
+					  <a class="item" role="button" tabindex="0" aria-label="Information">
+					    <i class="fi-info"></i>
+					  </a>
+					  <a class="item" role="button" tabindex="0" aria-label="Mail">
+					    <i class="fi-mail"></i>
+					  </a>
+					  <a class="item" role="button" tabindex="0" aria-label="Like">
+					    <i class="fi-like"></i>
+					  </a>
+					</div>-->
+		<div class="row">
+			<div class="small-8 columns">	  
+			  	<div>
+				    <p id="notice"><%= flash[:notice] %></p>
+				    <p id="alert"><%= flash[:alert] %></p>
+				</div>
+				<%= yield %>
+			</div>
+		  	<div class="small-4 columns">
+			    <h2 class="subheader">About Us</h2>
+			    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		  	</div>
 		</div>
-	  <%= yield %>
+	    <%= javascript_include_tag "application" %>
 	</body>
 </html>
+
+
+
